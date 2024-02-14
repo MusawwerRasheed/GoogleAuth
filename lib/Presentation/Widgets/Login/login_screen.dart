@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:googleauth/Presentation/Login/Home/home.dart';
-import 'package:googleauth/Presentation/Login/login_cubit.dart';
-import 'package:googleauth/Presentation/Login/login_state.dart';
+import 'package:googleauth/Presentation/Widgets/Home/home.dart';
+ 
+import 'LoginCubit/login_cubit.dart';
+import 'LoginCubit/login_state.dart';
+ 
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -54,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               builder: (BuildContext context, LoginStates state) {
                 if (state is LoginLoadingState) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is LoginErrorState) {
@@ -62,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(state.error ?? 'An error occurred'),
                   );
                 }
-                return SizedBox.shrink(); // Hide if not loading or error state
+                return SizedBox.shrink();  
               },
             ),
           ],
